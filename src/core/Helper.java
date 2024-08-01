@@ -18,4 +18,61 @@ public class Helper {
             }
         }
     }
+
+    public  static boolean isFieldEmpty(JTextField f){
+        return f.getText().trim().isEmpty();
+    }
+    public  static boolean isFieldList(JTextField[] fields){
+        for (JTextField fi:fields){
+            if (isFieldEmpty(fi)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isValidEmail(String mail){
+
+        if (!mail.contains("@")) return false;
+
+        String[] parts = mail.split("@");
+        if (parts.length !=2) return false;
+
+        if (parts[0].trim().isEmpty() || parts[1].trim().isEmpty()) return false;
+
+        if (!parts[1].contains(".")) return false;
+
+        return true;
+    }
+    public static void optionPanelDialogTR(){
+        UIManager.put("OptionPane.okButtonText", "Tamam");
+    }
+
+    public static void showMsg(String message) {
+        String msg;
+        String title;
+
+        optionPanelDialogTR();
+
+        switch (message) {
+            case "fill":
+                msg = "Lütfen Tüm alanları Doldurunuz!";
+                title = "HATA!";
+                break;
+            case "done":
+                msg = "İşlem Başarılı";
+                title = "Sonuç";
+                break;
+            case "error":
+                msg = "Bir Hata Oluştu";
+                title = "HATA!";
+
+            default:
+                msg = message;
+                title = "mesaj";
+        }
+
+        JOptionPane.showMessageDialog(null, msg, title, JOptionPane.INFORMATION_MESSAGE);
+    }
 }
+
