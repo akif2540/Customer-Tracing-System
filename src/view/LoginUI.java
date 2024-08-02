@@ -28,7 +28,7 @@ public class LoginUI extends JFrame {
 
         this.add(container);
         this.setTitle("Müşteri Yönetim Sistemi");
-        this.setSize(1000, 500);
+        this.setSize(400, 400);
 
         // UI Başlangıç noktası
 

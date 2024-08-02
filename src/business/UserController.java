@@ -13,5 +13,4 @@ public class UserController {
         return this.userDao.findByLogin(mail, password);
     }
 
-
 }
