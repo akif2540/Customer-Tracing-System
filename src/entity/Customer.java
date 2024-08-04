@@ -7,10 +7,10 @@ public class Customer {
     private String name;
     private String phone;
     private String mail;
-    private  String address;
+    private String address;
     private TYPE type;
 
-    public enum TYPE{
+    public enum TYPE {
         PERSON,
         COMPANY
     }

@@ -8,8 +8,7 @@ public class Database {
 
     private static Database instance = null;
     private Connection connection = null;
-    private final String DB_URL = "jdbc:mysql://localhost:3306/customermanage" +
-            "";
+    private final String DB_URL = "jdbc:mysql://localhost:3306/customermanage" + "";
     private final String DB_USERNAME = "root";
     private final String DB_PASSWORD = "25252525";
 
