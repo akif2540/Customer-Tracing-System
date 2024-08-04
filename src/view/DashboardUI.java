@@ -2,7 +2,6 @@ package view;
 
 import business.CustomerController;
 import core.Helper;
-import dao.CustomerDao;
 import entity.Customer;
 import entity.User;
 
@@ -11,7 +10,6 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class DashboardUI extends JFrame {
 
@@ -25,7 +23,7 @@ public class DashboardUI extends JFrame {
     private JTable tbl_customer;
     private JPanel pnl_customer_filter;
     private JTextField fld_f_customername;
-    private JComboBox cmb_customer_type;
+    private JComboBox<Customer.TYPE> cmb_f_customer_type;
     private JButton btn_customer_filter_reset;
     private JButton btn_customer_new;
     private JButton btn_customer_filter;
@@ -61,13 +59,12 @@ public class DashboardUI extends JFrame {
             LoginUI loginUI = new LoginUI();
         });
 
-
+          // CUSTOMER TAB
         loadCustomerTable(null);
         loadCustomerPopupMenu();
         loadCustomerButtonEvent();
-
-
-
+        this.cmb_f_customer_type.setModel(new DefaultComboBoxModel<>(Customer.TYPE.values()));
+        this.cmb_f_customer_type.setSelectedItem(null);
     }
 
     private void  loadCustomerButtonEvent(){
@@ -80,16 +77,24 @@ public class DashboardUI extends JFrame {
                     loadCustomerTable(null);
                 }
             });
+        });
+        btn_customer_filter.addActionListener(e -> {
+            ArrayList<Customer> filteredCustomers = this.customerController.filter(
+                    this.fld_f_customername.getText(),
+                    (Customer.TYPE) this.cmb_f_customer_type.getSelectedItem()
+            );
 
-
+            loadCustomerTable(filteredCustomers);
 
         });
 
+        btn_customer_filter_reset.addActionListener(e -> {
+            loadCustomerTable(null);
+            this.fld_f_customername.setText(null);
+            this.cmb_f_customer_type.setSelectedItem(null);
 
+        });
     }
-
-
-
 
     private void loadCustomerPopupMenu(){
 
@@ -121,16 +126,11 @@ public class DashboardUI extends JFrame {
                 }else {
                     Helper.showMsg("error");
                 }
-
             }
-
-
         });
 
         this.tbl_customer.setComponentPopupMenu(this.popup_customer);
     }
-
-
 
     private void loadCustomerTable(ArrayList<Customer> customers){
         Object[] columnCustomer = {"ID" , "Müşteri Adı" , "Tipi", "Telefon", "E-Posta","Adres"};
@@ -159,8 +159,5 @@ public class DashboardUI extends JFrame {
         this.tbl_customer.getColumnModel().getColumn(0).setMaxWidth(50);
         this.tbl_customer.setEnabled(true);
 
-
     }
-
-
 }
