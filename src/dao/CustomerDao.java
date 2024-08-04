@@ -2,7 +2,6 @@ package dao;
 
 import core.Database;
 import entity.Customer;
-import entity.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,15 +35,6 @@ public class CustomerDao {
 
     public boolean save(Customer customer) {
         String query = "INSERT INTO customer (name,type,phone,mail,address) VALUES (?,?,?,?,?)";
-        String query2 = "INSERT INTO customer" +
-                "(" +
-                "name," +
-                "type," +
-                "phone," +
-                "mail," +
-                "address" +
-                ") +" +
-                "VALUES (?,?,?,?,?)";
 
         try {
             PreparedStatement pr = this.connection.prepareStatement(query);
