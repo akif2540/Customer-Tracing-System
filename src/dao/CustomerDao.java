@@ -93,7 +93,6 @@ public class CustomerDao {
         }
 
         return true;
-
     }
 
     public boolean delete(int id) {
@@ -109,12 +108,12 @@ public class CustomerDao {
         return true;
     }
 
-    public ArrayList<Customer> query(String query){
+    public ArrayList<Customer> query(String query) {
         ArrayList<Customer> customers = new ArrayList<>();
 
         try {
             ResultSet rs = this.connection.createStatement().executeQuery(query);
-            while (rs.next()){
+            while (rs.next()) {
                 customers.add(this.match(rs));
             }
         } catch (SQLException e) {
