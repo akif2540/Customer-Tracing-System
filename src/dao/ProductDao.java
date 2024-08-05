@@ -1,6 +1,7 @@
 package dao;
 
 import core.Database;
+import entity.Customer;
 import entity.Product;
 
 import java.sql.Connection;
@@ -100,6 +101,21 @@ public class ProductDao {
             e.printStackTrace();
         }
         return true;
+    }
+
+    public ArrayList<Product> query(String query) {
+        ArrayList<Product> products = new ArrayList<>();
+
+        try {
+            ResultSet rs = this.connection.createStatement().executeQuery(query);
+            while (rs.next()) {
+                products.add(this.match(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return products;
+
     }
 
 
