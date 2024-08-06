@@ -99,14 +99,14 @@ public class DashboardUI extends JFrame {
             LoginUI loginUI = new LoginUI();
         });
 
-        // CUSTOMER TAB
+        // CUSTOMER TABLE
         loadCustomerTable(null);
         loadCustomerPopupMenu();
         loadCustomerButtonEvent();
         this.cmb_f_customer_type.setModel(new DefaultComboBoxModel<>(Customer.TYPE.values()));
         this.cmb_f_customer_type.setSelectedItem(null);
 
-        // PRODUCT TAB
+        // PRODUCT TABLE
         loadProductTable(null);
         loadProductPopupMenu();
         loadProductButtonEvent();
@@ -114,17 +114,17 @@ public class DashboardUI extends JFrame {
         this.cmb_f_product_stock.addItem(new Item(2, "Stokta Yok"));
         this.cmb_f_product_stock.setSelectedItem(null);
 
-        // BASKET TAB
+        // BASKET TABLE
         loadBasketTable();
         loadBasketButtonEvent();
         loadBasketCustomerCombo();
 
-        //CART TAB
+        //CART TABLE
         loadCartTable();
 
     }
 
-    private void loadCartTable() {
+    public void loadCartTable() {
         Object[] columnCart = {"ID", "Müşteri Adı", "Ürün Adı", "Fiyat", "Sipariş Tarihi" , "Sipariş Notu"};
         ArrayList<Cart> carts = this.cartController.findAll();
 
@@ -153,7 +153,6 @@ public class DashboardUI extends JFrame {
         this.tbl_cart.setEnabled(true);
     }
 
-
     private void loadBasketCustomerCombo() {
         ArrayList<Customer> customers = this.customerController.findAll();
         this.cmb_basket_customer.removeAllItems();
@@ -174,7 +173,6 @@ public class DashboardUI extends JFrame {
             } else {
                 Helper.showMsg("error");
             }
-
         });
         this.btn_basket_new.addActionListener(e -> {
 
@@ -195,12 +193,14 @@ public class DashboardUI extends JFrame {
                         @Override
                         public void windowClosed(WindowEvent e) {
                             loadBasketTable();
+                            loadCartTable();
                             loadProductTable(null);
                         }
                     });
                 }
             }
         });
+
     }
 
     private void loadBasketTable() {
@@ -266,7 +266,6 @@ public class DashboardUI extends JFrame {
             loadProductTable(null);
 
         });
-
     }
 
     private void loadProductPopupMenu() {
@@ -397,8 +396,6 @@ public class DashboardUI extends JFrame {
                 public void windowClosed(WindowEvent e) {
                     loadCustomerTable(null);
                     loadBasketCustomerCombo();
-
-
                 }
             });
         });
@@ -440,6 +437,4 @@ public class DashboardUI extends JFrame {
         this.tbl_customer.setEnabled(true);
 
     }
-
-
 }

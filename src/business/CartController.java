@@ -15,6 +15,4 @@ public class CartController {
     public ArrayList<Cart> findAll(){
         return this.cartDao.findAll();
     }
-
-
 }

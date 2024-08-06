@@ -47,6 +47,7 @@ public class Helper {
     }
 
     public static void optionPanelDialogTR() {
+
         UIManager.put("OptionPane.okButtonText", "Tamam");
         UIManager.put("OptionPane.yesButtonText", "Evet");
         UIManager.put("OptionPane.noButtonText", "Hayır");

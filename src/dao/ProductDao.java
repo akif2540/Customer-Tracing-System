@@ -50,7 +50,6 @@ public class ProductDao {
             e.printStackTrace();
         }
         return true;
-
     }
 
     public Product getById(int id) {
@@ -87,7 +86,6 @@ public class ProductDao {
         }
 
         return true;
-
     }
 
     public boolean delete(int id) {
@@ -117,7 +115,6 @@ public class ProductDao {
         return products;
 
     }
-
 
     public Product match(ResultSet rs) throws SQLException {
         Product product = new Product();

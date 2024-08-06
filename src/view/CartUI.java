@@ -33,6 +33,8 @@ public class CartUI extends JFrame {
     private BasketController basketController;
     private CartController cartController;
     private ProductController productController;
+    public DashboardUI dashboardUI;
+
 
 
     public CartUI(Customer customer) {
@@ -57,7 +59,7 @@ public class CartUI extends JFrame {
         }
 
         ArrayList<Basket> baskets = this.basketController.findAll();
-        if (baskets.size() == 0) {
+        if (baskets.isEmpty()) {
             Helper.showMsg("Lütfen Sepete Ürün Ekleyiniz !!");
             dispose();
         }
@@ -85,9 +87,12 @@ public class CartUI extends JFrame {
                 }
                 this.basketController.clear();
                 Helper.showMsg("done");
+                System.out.println("sipariş oluştuuu");
+
                 dispose();
             }
         });
+
     }
 
     private void createUIComponents() throws ParseException {
@@ -95,4 +100,6 @@ public class CartUI extends JFrame {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.fld_cart_date.setText(formatter.format(LocalDate.now()));
     }
+
+
 }

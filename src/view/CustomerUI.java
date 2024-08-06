@@ -52,9 +52,7 @@ public class CustomerUI extends JFrame {
             this.fld_customer_phone.setText(this.customer.getPhone());
             this.tarea_customeraddress.setText(this.customer.getAddress());
             this.cmb_customer_type.getModel().setSelectedItem(this.customer.getType());
-
         }
-
 
         this.btn_customer_save.addActionListener(e -> {
             JTextField[] checkList = {this.fld_customer_name, this.fld_customer_phone};
@@ -77,17 +75,15 @@ public class CustomerUI extends JFrame {
                 } else {
                     result = this.customerController.update(this.customer);
 
-
                 }
                 if (result) {
                     Helper.showMsg("done");
                     dispose();
+
                 } else {
                     Helper.showMsg("error");
                 }
-
             }
-
         });
     }
 }
