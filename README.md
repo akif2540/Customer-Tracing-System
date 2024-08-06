@@ -17,3 +17,6 @@ This project is an Order Management System developed with Java Swing. The purpos
 - **MySQL**
 - **OOP (Object-Oriented Programming)**
 - **Clean Code Principles**
+
+- https://github.com/user-attachments/assets/9a6a7b77-d75f-4024-a0d9-a5bf25b0e2ae
+
